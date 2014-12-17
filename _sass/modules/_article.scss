@@ -1,0 +1,37 @@
+article {
+  padding-top: 1.4em;
+
+  header {
+    padding-bottom: 1em;
+
+    @include respond-to(handheld) {
+      text-align: left;
+    }
+
+    @include respond-to(handheld-plus) {
+      text-align: center;
+    }
+
+    h1, p {
+      margin: 0;
+    }
+
+    h1 {
+      line-height: 1.2;
+    }
+
+    p {
+      padding-top: 0.5em;
+      color: $c-em-copy;
+      font-size: 0.875em;
+    }
+  }
+
+  p {
+    line-height: 1.45;
+  }
+
+  ul, ol {
+    padding: 0;
+  }
+}

@@ -1,0 +1,22 @@
+nav {
+  &.main {
+    > a {
+      font-size: 0.75em;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 2.5;
+    }
+  }
+
+  &.half {
+    width: 50%;
+  }
+
+  &.right {
+    float: right;
+
+    > a {
+      float: right;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.listing {
+  padding: 1em 0;
+  list-style-type: none;
+}
+
+.listing-item {
+}
+
+.listing-time {
+  color: $light-grey;
+}
+
+.listing-title {
+  margin: 0;
+}
+
+.listing-link {
+  text-decoration: none;
+  border-bottom: 1px solid $light-grey;
+
+  &:hover {
+    border-bottom-color: $blue;
+  }
+}

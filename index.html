@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<section class="summary">
+  <p>This is the future home for a collection of articles. The goal is for them to be fairly long in length, instructive in nature, and on topics like web design, programming and photography.<p>
+</section>
+
+<ol class="listing">
+  {% for post in site.posts %}
+    <li class="listing-item">
+      <time class="listing-time">{{ post.date | date: "%A, %B %d, %Y" }}</time>
+      <h2 class="listing-title"><a href="{{ post.url }}" class="listing-link">{{ post.title }}</a></h2>
+    </li>
+  {% endfor %}
+</ol>

@@ -1,0 +1,11 @@
+$breakpoint-handheld: 30em;
+
+// Respond to for media queries
+@mixin respond-to($media) {
+  @if $media == handheld {
+    @media only screen and (max-width: $breakpoint-handheld) { @content; }
+  }
+  @if $media == handheld-plus {
+    @media only screen and (min-width: $breakpoint-handheld) { @content; }
+  }
+}

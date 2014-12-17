@@ -1,0 +1,60 @@
+---
+---
+
+// Global
+@import "settings";
+@import "mixins";
+@import "vendor/normalize";
+@import "syntax";
+
+html {
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  background: white;
+  color: $c-body-copy;
+  font-family: $primary-font-family;
+  padding: 1rem 1.5rem;
+  max-width: 40em;
+  margin: 0 auto;
+}
+
+/*::selection {*/
+  /*color: black;*/
+  /*background: rgba(220,220,0,.55);*/
+  /*text-shadow: none;*/
+/*}*/
+
+a {
+  &:link, &:active, &:visited {
+    color: $blue;
+  }
+
+  &:hover {
+    color: darken($blue, 10%);
+  }
+}
+
+%full {
+  float: left;
+  clear: left;
+  width: 100%;
+}
+
+.main {
+}
+
+
+// Modules
+@import "modules/header";
+@import "modules/footer";
+@import "modules/article";
+@import "modules/listing";
+@import "modules/nav";
+@import "modules/logo";
+@import "modules/highlight";
+
+@import "helpers";
+@import "print";
