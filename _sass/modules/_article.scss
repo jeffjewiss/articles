@@ -1,5 +1,5 @@
 article {
-  padding-top: 1.4em;
+  padding: 1.4em 0 3em 0;
 
   header {
     padding-bottom: 1em;
@@ -18,13 +18,20 @@ article {
 
     h1 {
       line-height: 1.2;
+      padding: 0;
     }
 
     p {
       padding-top: 0.5em;
       color: $c-em-copy;
       font-size: 0.875em;
+      text-indent: 0.1em;
     }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    padding-top: 1em;
+    line-height: 1.4;
   }
 
   p {
@@ -33,5 +40,9 @@ article {
 
   ul, ol {
     padding: 0;
+  }
+
+  li {
+    padding-bottom: 0.5em;
   }
 }

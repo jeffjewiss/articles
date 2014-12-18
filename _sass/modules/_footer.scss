@@ -1,7 +1,40 @@
 .footer {
-  .copyright {
-    text-align: center;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: fadeInUpBig;
+          animation-name: fadeInUpBig;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+
+  hr {
+    border: none;
+    width: 75%;
+    height: 0.0625rem;
+    margin: 1rem auto;
+    background-color: $c-footer-border;
+  }
+
+  .colophon {
     font-size: 0.875em;
+    color: $c-colophon-copy;
+
+    a {
+      &:link, &:visited, &:active, &:hover {
+        color: $c-colophon-copy;
+      }
+    }
+  }
+
+  .copyright {
+    font-size: 0.75em;
     color: $c-em-copy;
+
+    a {
+      &:link, &:visited, &:active, &:hover {
+        color: $c-em-copy;
+      }
+    }
   }
 }

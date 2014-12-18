@@ -173,7 +173,7 @@ This configuration would tell the application to respond to "get" requests at th
 If you wanted to setup routing for an API endpoint that responded to a "put" request to update an existing user, you would have:
 
 {% highlight javascript %}
-'put /posts/:id`: {
+'put /posts/:id': {
     controller: 'postsController',
     action: 'update'
 }

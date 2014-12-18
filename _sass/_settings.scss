@@ -1,10 +1,16 @@
-$primary-font-family: "ff-tisa-sans-web-pro", "ratio", Helvetica, Arial, sans-serif;
+$primary-font-family: "ff-tisa-sans-web-pro", Helvetica, Arial, sans-serif;
 
 // Colours
 $blue: #0074D9;
 $black: #111111;
+$grey: #AAAAAA;
 $light-grey: #CCCCCC;
+$dark-grey: #333333;
 $olive: #3D9970;
 
+$c-primary: $olive;
 $c-body-copy: $black;
+$c-summary-copy: $dark-grey;
 $c-em-copy: $light-grey;
+$c-colophon-copy: $dark-grey;
+$c-footer-border: $light-grey;

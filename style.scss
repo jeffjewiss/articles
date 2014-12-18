@@ -5,45 +5,72 @@
 @import "settings";
 @import "mixins";
 @import "vendor/normalize";
-@import "syntax";
+@import "vendor/syntax";
+@import "vendor/animate";
 
 html {
+  background: white;
   min-height: 100%;
   box-sizing: border-box;
+
+  @include respond-to(handheld) {
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 0.5rem;
+      background-color: $c-primary;
+    }
+
+    &.cssanimations:before {
+      -webkit-transform: translate3d(0, -100%, 0);
+              transform: translate3d(0, -100%, 0);
+      -webkit-animation-fill-mode: both;
+              animation-fill-mode: both;
+      -webkit-animation-name: fadeInDown;
+              animation-name: fadeInDown;
+      -webkit-animation-duration: 0.5s;
+              animation-duration: 0.5s;
+      -webkit-animation-delay: 0.75s;
+              animation-delay: 0.75s;
+    }
+  }
 }
 
 body {
-  background: white;
+  position: relative;
   color: $c-body-copy;
   font-family: $primary-font-family;
-  padding: 1rem 1.5rem;
-  max-width: 40em;
+  padding: 1.5rem;
   margin: 0 auto;
 }
 
-/*::selection {*/
-  /*color: black;*/
-  /*background: rgba(220,220,0,.55);*/
-  /*text-shadow: none;*/
-/*}*/
+::selection {
+  color: black;
+  background: rgba(61, 153, 112, 0.55);
+  text-shadow: none;
+}
 
 a {
   &:link, &:active, &:visited {
-    color: $blue;
+    color: $c-primary;
   }
 
   &:hover {
-    color: darken($blue, 10%);
+    color: darken($c-primary, 10%);
   }
 }
 
-%full {
-  float: left;
-  clear: left;
-  width: 100%;
-}
-
 .main {
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: fadeInUpBig;
+          animation-name: fadeInUpBig;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
 }
 
 
@@ -55,6 +82,7 @@ a {
 @import "modules/nav";
 @import "modules/logo";
 @import "modules/highlight";
+@import "modules/summary";
 
 @import "helpers";
 @import "print";

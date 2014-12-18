@@ -1,9 +1,11 @@
 .listing {
   padding: 1em 0;
+  margin: 0;
   list-style-type: none;
 }
 
 .listing-item {
+  padding-bottom: 1.75em;
 }
 
 .listing-time {
@@ -18,7 +20,11 @@
   text-decoration: none;
   border-bottom: 1px solid $light-grey;
 
+  &:link, &:visited, &:active {
+    color: $black;
+  }
+
   &:hover {
-    border-bottom-color: $blue;
+    border-bottom-color: $c-primary;
   }
 }

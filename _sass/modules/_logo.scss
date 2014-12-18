@@ -1,15 +1,21 @@
 .logo {
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: zoomIn;
+          animation-name: zoomIn;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+
   @include respond-to('handheld') {
     float: left;
-
-    > img {
-      width: 2.375rem;
-      margin: 0;
-    }
+    width: 2.375rem;
+    height: 2.375rem;
+    margin: 0;
   }
+}
 
-  > img {
-    display: block;
-    /*margin: 1em auto 2em auto;*/
-  }
+.logo-mark {
+  fill: $c-primary;
 }
