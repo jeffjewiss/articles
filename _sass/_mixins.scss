@@ -1,4 +1,6 @@
 $breakpoint-handheld: 30em;
+$breakpoint-tablet: 48em;
+$breakpoint-large: 64em;
 
 // Respond to for media queries
 @mixin respond-to($media) {
@@ -7,5 +9,17 @@ $breakpoint-handheld: 30em;
   }
   @if $media == handheld-plus {
     @media only screen and (min-width: $breakpoint-handheld) { @content; }
+  }
+  @if $media == tablet {
+    @media only screen and (max-width: $breakpoint-tablet) { @content; }
+  }
+  @if $media == tablet-plus {
+    @media only screen and (min-width: $breakpoint-tablet) { @content; }
+  }
+  @if $media == large {
+    @media only screen and (max-width: $breakpoint-large) { @content; }
+  }
+  @if $media == large-plus {
+    @media only screen and (min-width: $breakpoint-large) { @content; }
   }
 }

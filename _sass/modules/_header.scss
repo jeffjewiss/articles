@@ -1,15 +1,22 @@
 .header {
-  @include respond-to('handheld') {
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
+  margin: 0 auto;
+  max-width: 38em;
+
+  @include respond-to('large-plus') {
+    padding-bottom: 0;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
   }
 
   h1 {
     float: left;
     margin: 0;
     width: 50%;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     line-height: 2;
-
+    padding-left: 1.1rem;
     -webkit-animation-fill-mode: both;
             animation-fill-mode: both;
     -webkit-animation-name: zoomIn;
@@ -19,8 +26,8 @@
     -webkit-animation-delay: 0.5s;
             animation-delay: 0.5s;
 
-    @include respond-to('handheld') {
-      padding-left: 1.1rem;
+    @include respond-to('large-plus') {
+      line-height: 1.6;
     }
 
     a {
@@ -33,6 +40,12 @@
 
       &:hover {
         text-decoration: underline;
+      }
+
+      @include respond-to('large-plus') {
+        &:link, &:visited, &:active, &:hover {
+          color: white;
+        }
       }
     }
   }

@@ -1,14 +1,23 @@
 article {
   padding: 1.4em 0 3em 0;
 
+  @include respond-to('handheld-plus') {
+    font-size: 1.125rem;
+  }
+
+  @include respond-to('lap-plus') {
+    font-size: 1.3125rem;
+  }
+
   header {
     padding-bottom: 1em;
+    text-rendering: optimizeLegibility;
 
-    @include respond-to(handheld) {
+    @include respond-to('handheld') {
       text-align: left;
     }
 
-    @include respond-to(handheld-plus) {
+    @include respond-to('handheld-plus') {
       text-align: center;
     }
 
@@ -44,5 +53,11 @@ article {
 
   li {
     padding-bottom: 0.5em;
+  }
+
+  p code {
+    background-color: hsla(153, 5%, 0%, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25em;
   }
 }

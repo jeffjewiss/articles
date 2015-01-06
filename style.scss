@@ -10,11 +10,10 @@
 
 html {
   background: white;
-  min-height: 100%;
-  box-sizing: border-box;
+  height: 100%;
 
-  @include respond-to(handheld) {
-    &:before {
+  @include respond-to('handheld') {
+    &::before {
       content: '';
       display: block;
       position: absolute;
@@ -23,7 +22,7 @@ html {
       background-color: $c-primary;
     }
 
-    &.cssanimations:before {
+    &.cssanimations::before {
       -webkit-transform: translate3d(0, -100%, 0);
               transform: translate3d(0, -100%, 0);
       -webkit-animation-fill-mode: both;
@@ -36,14 +35,33 @@ html {
               animation-delay: 0.75s;
     }
   }
+
+  @include respond-to('large-plus') {
+    padding-left: 20rem;
+    background-color: $c-primary;
+  }
 }
 
 body {
   position: relative;
+  min-height: 100%;
+  box-sizing: border-box;
   color: $c-body-copy;
   font-family: $primary-font-family;
-  padding: 1.5rem;
   margin: 0 auto;
+  padding: 6.25%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+          font-smoothing: antialiased;
+
+  @include respond-to('tablet-plus') {
+    font-size: 1.125rem;
+    background-color: white;
+  }
+
+  @include respond-to('large-plus') {
+    font-size: 1.3125rem;
+  }
 }
 
 ::selection {
@@ -63,6 +81,8 @@ a {
 }
 
 .main {
+  margin: 0 auto;
+  max-width: 38em;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   -webkit-animation-name: fadeInUpBig;
@@ -73,7 +93,6 @@ a {
           animation-delay: 0.5s;
 }
 
-
 // Modules
 @import "modules/header";
 @import "modules/footer";
@@ -83,6 +102,5 @@ a {
 @import "modules/logo";
 @import "modules/highlight";
 @import "modules/summary";
-
 @import "helpers";
 @import "print";

@@ -1,4 +1,8 @@
 .logo {
+  float: left;
+  width: 2.375rem;
+  height: 2.375rem;
+  margin: 0;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   -webkit-animation-name: zoomIn;
@@ -8,14 +12,18 @@
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
 
-  @include respond-to('handheld') {
+  @include respond-to('large-plus') {
     float: left;
-    width: 2.375rem;
-    height: 2.375rem;
+    width: 2.75rem;
+    height: 2.75rem;
     margin: 0;
   }
 }
 
 .logo-mark {
   fill: $c-primary;
+
+  @include respond-to('large-plus') {
+    fill: white;
+  }
 }
