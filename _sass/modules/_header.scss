@@ -4,6 +4,7 @@
   max-width: 38em;
 
   @include respond-to('large-plus') {
+    width: 18.5rem;
     padding-bottom: 0;
     position: fixed;
     bottom: 1.5rem;
