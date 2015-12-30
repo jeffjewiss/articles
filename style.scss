@@ -35,6 +35,34 @@ html {
               animation-delay: 0.75s;
     }
   }
+
+  @include respond-to('large-plus') {
+    &::before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: -5rem;
+      z-index: 1;
+      height: 100%;
+      width: 0.5rem;
+      background-color: $c-primary;
+    }
+
+    &.cssanimations::before {
+      -webkit-transform: translate3d(-100%, 0, 0);
+              transform: translate3d(-100%, 0, 0);
+      -webkit-animation-fill-mode: both;
+              animation-fill-mode: both;
+      -webkit-animation-name: fadeInLeft;
+              animation-name: fadeInLeft;
+      -webkit-animation-duration: 0.5s;
+              animation-duration: 0.5s;
+      -webkit-animation-delay: 0.75s;
+              animation-delay: 0.75s;
+    }
+  }
 }
 
 body {
