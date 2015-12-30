@@ -19,4 +19,5 @@ sass:
 exclude:
   - README.md
   - .editorconfig
+  - .gitignore
   - Procfile
