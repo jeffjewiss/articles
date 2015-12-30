@@ -11,19 +11,8 @@
           animation-duration: 0.5s;
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
-
-  @include respond-to('large-plus') {
-    float: left;
-    width: 2.75rem;
-    height: 2.75rem;
-    margin: 0;
-  }
 }
 
 .logo-mark {
   fill: $c-primary;
-
-  @include respond-to('large-plus') {
-    fill: white;
-  }
 }

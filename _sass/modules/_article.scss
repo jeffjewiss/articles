@@ -21,6 +21,10 @@ article {
       text-align: center;
     }
 
+    @include respond-to('handheld-plus') {
+      text-align: left;
+    }
+
     h1, p {
       margin: 0;
     }

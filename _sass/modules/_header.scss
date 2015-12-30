@@ -4,11 +4,7 @@
   max-width: 38em;
 
   @include respond-to('large-plus') {
-    width: 18.5rem;
-    padding-bottom: 0;
-    position: fixed;
-    bottom: 1.5rem;
-    left: 1.5rem;
+    max-width: 35em;
   }
 
   h1 {
@@ -27,10 +23,6 @@
     -webkit-animation-delay: 0.5s;
             animation-delay: 0.5s;
 
-    @include respond-to('large-plus') {
-      line-height: 2.2;
-    }
-
     a {
       text-decoration: none;
       transition: all 0.25s ease-in-out;
@@ -41,12 +33,6 @@
 
       &:hover {
         text-decoration: underline;
-      }
-
-      @include respond-to('large-plus') {
-        &:link, &:visited, &:active, &:hover {
-          color: white;
-        }
       }
     }
   }
