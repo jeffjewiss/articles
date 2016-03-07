@@ -40,17 +40,17 @@ Let’s setup the service first and then create a method that handles subscribin
 
 In “api/services/MailchimpService.js” we’ll add:
 
-{% highlight javascript %}
+```javascript
 var listID = process.env.MAILCHIMP_LIST_ID;
 var apiKey = process.env.MAILCHIMP_API_KEY;
 
 var mailchimpAPI = require('mailchimp-api');
 var mc = new mailchimpAPI.Mailchimp(apiKey);
-{% endhighlight %}
+```
 
 The first two lines grab our environment variables and the second two create an instance of the Mailchimp API wrapper using our API key. Continued in the same file:
 
-{% highlight javascript %}
+```javascript
 module.exports = {
   subscribe: function (options, successCallback, errorCallback) {
     if (!options.email) {
@@ -71,7 +71,7 @@ module.exports = {
 
   }
 }
-{% endhighlight %}
+```
 
 The idea behind Sails services is to provide a function or object that is globally available to the other parts of your application. It's a way to break off functionality and not overload your models or controllers. In this case the service is pretty simple; it will be an object with one property defined as a method: subscribe. This method will have three arguments: options to supply data to include with the request to Mailchimp and success and error callbacks. The service is setup this way so that we can add more methods, related to the Mailchimp account or list, at a later time.
 
@@ -86,7 +86,7 @@ Our service is all setup, but we’ll want to update some configuration before w
 
 The blueprints API configuration lives in “config/blueprints.js”:
 
-{% highlight javascript %}
+```javascript
 module.exports.blueprints = {
   actions: false,
   rest: false,
@@ -95,21 +95,21 @@ module.exports.blueprints = {
   populate: false,
   autoWatch: false
 }
-{% endhighlight %}
+```
 
 We’ll also need to configure the route, which will handle the post request from Tito, in "config/routes.js”:
 
-{% highlight javascript %}
+```javascript
 module.exports.routes = {
   'post /tito': 'HooksController.tito',
 };
-{% endhighlight %}
+```
 
 The route handler will accept post requests to the “/tito” URL and it will call the “tito” action on the hooks controller.
 
 Next, we’ll create “api/controllers/HooksController.js”:
 
-{% highlight javascript %}
+```javascript
 module.exports = {
   tito: function(req, res) {
     var webhookName = req.get('X-Webhook-Name');
@@ -130,7 +130,7 @@ module.exports = {
 
   }
 }
-{% endhighlight %}
+```
 
 Controllers in Sails are objects with a function, defined as a property of the object, for each action. These functions have access to the request and response objects like route handlers in an Express.js app.
 
@@ -144,15 +144,15 @@ Deploying the Application on Heroku
 
 To get this server up and running on the free tier of Heroku, since it does not require a database or support for sessions, you will need to set the environment variables, and then trigger a build. Once you’ve created a new application on Heroku you can add the Mailchimp credentials:
 
-{% highlight bash %}
+```bash
 heroku config:set MAILCHIMP_API_KEY=<api key> MAILCHIMP_LIST_ID=<list id>
-{% endhighlight %}
+```
 
 After committing your work with get, all that’s left is to set the git url of your application and then push the code to trigger a build:
 
-{% highlight bash %}
+```bash
 git remote add heroku <heroku url>
 git push heroku master
-{% endhighlight %}
+```
 
 From here your server should be running, which you can confirm by checking the logs for errors with `heroku logs`, and is ready for testing. To test it out you can create an event on Tito and add the URL of your webhook server with the “/tito” path and go through the ticket reservation flow.

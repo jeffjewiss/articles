@@ -28,23 +28,23 @@ These features are also highlighted on the Sails website:
 
 The first thing you'll need to do is install the command line tools by globally installing the Sails package:
 
-{% highlight bash %}
+```bash
 npm install -g sails
-{% endhighlight %}
+```
 
 Once this finishes successfully you can create a new sails project (and a new directory) by running:
 
-{% highlight bash %}
+```bash
 sails new <project-name>
-{% endhighlight %}
+```
 
 This will start you off with all the files you need for your application, as well as the basic set of dependencies. It's important to note that as of Sails version 0.10.5, the dependencies in your node modules directory will be symlinks to the global versions already installed. If you'd prefer to use local copies, you can delete the node modules directory and run `npm install`.
 
 To start the server and get your application started, switch to the directory where the application was created and run:
 
-{% highlight bash %}
+```bash
 sails lift
-{% endhighlight %}
+```
 
 You'll see log information on the actions Sails is taking and the URL where you can view the running application. To quickly open the URL in your browser, you can <ctrl> + click the link, which is likely `http://localhost:1337`.
 
@@ -63,22 +63,22 @@ Sails is a collection of conventions and modules to help you build Node web appl
 
 After running `sails new` to create a new Sails application you should have a homepage view, a layout and some error pages, but not much else. If you open up the router configuration file at `config/routes.js` you should now have one route for the root URL of your application:
 
-{% highlight javascript %}
+```javascript
 '/': {
     view: 'homepage'
 }
-{% endhighlight %}
+```
 
 So if you wanted to add an about page to your application you would add a new route so that the above code would become:
 
-{% highlight javascript %}
+```javascript
 '/': {
     view: 'homepage'
 },
 '/about': {
     view: 'about'
 }
-{% endhighlight %}
+```
 
 Now when you visit `http://localhost:1337/about` in your browser Sails will look for a view named "about" to render, after wrapping it in the layout template. This view does not exist yet, so we'll need to create a new file `views/about.ejs` and populate it with some HTML. Since these views don't currently have a controller no data from the API will be available to use in the view, but you will have access to localized text, view variables and other data provided by the application's middleware.
 
@@ -92,26 +92,26 @@ The Blueprint API is a set of default routes and actions that provide instructio
 
 So if you wanted your API to have a book object, you could generate a model and controller for it using the Sails CLI by running:
 
-{% highlight bash %}
+```bash
 sails generate api book
-{% endhighlight %}
+```
 
 *If Sails interrupts and asks for a migration setting, you can type 2 and press enter.*
- 
+
 Now you could create a new book in your application by simply visiting the URL `/book/create?name=Game of Thrones`, and another one by visiting `/book/create?name=The Hunger Games` and then view a list of your books by visiting `/book`.
 
 *note: to avoid the migration warning from Sails when generating the book api, add the following to `config/env/development.js`*
 
-{% highlight javascript %}
+```javascript
 models: {
   migrate: "alter"
 }
-{% endhighlight %}
+```
 
 
 ### Blueprint Routes
 
-When Blueprints are enabled (which is the default) and you run {% highlight bash %}sails lift{% endhighlight %}, the framework inspects your models and controllers to create "shadow" routes to respond to many of the common requests without you having to configure them in `config/routes.js` or otherwise write any code. These "shadows" will respond to these requests by pointing to the corresponding Blueprint actions.
+When Blueprints are enabled (which is the default) and you run `sails lift`, the framework inspects your models and controllers to create "shadow" routes to respond to many of the common requests without you having to configure them in `config/routes.js` or otherwise write any code. These "shadows" will respond to these requests by pointing to the corresponding Blueprint actions.
 
 There are 3 types of Blueprint routes in Sails:
 
@@ -161,23 +161,23 @@ While basic routing has already been covered, it's important to understand how t
 
 If you wanted to setup routing for an API endpoint that responded to a get request with a list of all the posts, you would have:
 
-{% highlight javascript %}
+```javascript
 'get /posts': {
     controller: 'postsController',
     action: 'list'
 }
-{% endhighlight %}
+```
 
 This configuration would tell the application to respond to "get" requests at the specified URI and send that request to be handled by the "list" action of the "postsController".
 
 If you wanted to setup routing for an API endpoint that responded to a "put" request to update an existing user, you would have:
 
-{% highlight javascript %}
+```javascript
 'put /posts/:id': {
     controller: 'postsController',
     action: 'update'
 }
-{% endhighlight %}
+```
 
 This configuration would tell the application to respond to "put" requests at the specified URI and pass the request, including the id parameter, to the "update" action of the "postsController".
 
@@ -187,13 +187,13 @@ This configuration would tell the application to respond to "put" requests at th
 To swap out a different view engine you'll need to follow a few steps. The first thing you'll need to do is install the node module for the engine you'd like to use and add it to your `package.json` file.
 
 
-{% highlight bash %}
+```bash
 npm install jade --save
-{% endhighlight %}
+```
 
 Next you'll need to update the configuration file for you views in `config/views.js`:
 
-{% highlight javascript %}
+```javascript
 module.exports.views = {
     engine: 'jade',
     layout: false,
@@ -201,7 +201,7 @@ module.exports.views = {
         // Any options you would like to pass to the Jade parser
     }
 }
-{% endhighlight %}
+```
 
 You'll need to disable the layout option, since this is only currently supported for EJS, and instead use the engine's extend functionality (a combination of extends and blocks in Jade).
 
@@ -212,9 +212,9 @@ Finally you'll want to remove the EJS module from your `package.json`.
 
 This can be achieved by simply swapping the Grunt tasks. First remove the `grunt-contrib-less` task from your `package.json` and install the Grunt Sass module:
 
-{% highlight bash %}
+```bash
 npm install grunt-contrib-sass --save
-{% endhighlight %}
+```
 
 Next change all Grunt task references of "less" to "sass". Start by renaming the file `tasks/config/less.js` to `tasks/config/sass.js`. Also, change all of the references of "less" to "sass" within the file, as well as in the following files:
 
@@ -230,29 +230,29 @@ As briefly mentioned before, Sails uses an Object Relational Mapper, called Wate
 
 You've probably noticed a pattern by now. The first step is to install the Sails Waterline adapter for Postgresql:
 
-{% highlight bash %}
+```bash
 npm install sails-postgresql --save
-{% endhighlight %}
+```
 
-Once installed, you'll need to configure the adapter in the `config/connections.js` file by modifying one of the examples or adding a new connection. The following example configuration uses a URL via an environment variable instead of a username, password, host, and port because it's best practice to keep your API keys and usernames and passwords out of your code, and deployment will be done using Heroku. 
+Once installed, you'll need to configure the adapter in the `config/connections.js` file by modifying one of the examples or adding a new connection. The following example configuration uses a URL via an environment variable instead of a username, password, host, and port because it's best practice to keep your API keys and usernames and passwords out of your code, and deployment will be done using Heroku.
 
-{% highlight javascript %}
+```javascript
 postgres: {
     adapter: 'sails-postgresql',
     url: process.env.DATABASE_URL,
     pool: true
 }
-{% endhighlight %}
+```
 
 With this configuration in place various parts of your application can now connect to and use your Postgres database, however nothing has been configured to use it. Also, it's worth noting that adding another type of database would follow the same pattern of installing the adapter and configuring the connection.
 
 Now, to setup your models to use the Postgres adapter the `config/models.js` file will need to be updated:
 
-{% highlight javascript %}
+```javascript
 module.exports.models = {
     connection: 'postgres'
 }
-{% endhighlight %}
+```
 
 #### Environment Variable Setup
 
@@ -262,11 +262,11 @@ You'll need to install a tool to load the "database url" variable into the envir
 
 Foreman will check for a start script to know how to run your application. In the case of a Sails application, this is equivalent to `sails lift`. Add a start script to your `package.json`:
 
-{% highlight javascript %}
+```javascript
 scripts: {
     "start": "node app.js"
 }
-{% endhighlight %}
+```
 
 You can now run the application locally using `nf start` instead of `sails lift`.
 
@@ -279,9 +279,9 @@ Once the application has matured to a point where you want to share it with the 
 
 The first step is to install the [Heroku Toolbelt](https://toolbelt.heroku.com/) and login, or create an account if you don't already have one. Now you'll be able to create a copy of your application on Heroku:
 
-{% highlight bash %}
+```bash
 heroku create
-{% endhighlight %}
+```
 
 
 ### Configuration
@@ -290,19 +290,19 @@ At this point in the development of our application there isn't much to configur
 
 Since a start script has already been added, Heroku already knows how to run the application. However, a Postgresql database still needs to be added:
 
-{% highlight bash %}
+```bash
 heroku addons:add heroku-postgresql:hobby-dev
-{% endhighlight %}
+```
 
 This command adds the free tier Postgres database to your Heroku application and also adds the `DATABASE_URL` environment variable for you.
 
 To ensure that migrations are handled automatically by Sails after each deploy, you'll want to update the production model configuration in `config/env/production.js`
 
-{% highlight javascript %}
+```javascript
 models: {
   migrate: "alter"
 }
-{% endhighlight %}
+```
 
 *Note: for a real production application this setting should be `migrate: "safe"`, which requires you to manually handle migrations.*
 
@@ -312,9 +312,9 @@ models: {
 Heroku handles transferring code and building applications with Git. When you ran the `heroku create` command a remote named "heroku" was added to your local git repository. To send the code to Heroku and have it build and run your application you just push to the "heroku" remote:
 
 
-{% highlight bash %}
+```bash
 git push heroku master
-{% endhighlight %}
+```
 
 
 ## Summary

@@ -68,7 +68,7 @@ Below is the file structure for the project. I’ll be covering the contents of 
 
 First, we’ll go over the `build.js` file, which contains the entirety of the Metalsmith application.
 
-{% highlight javascript %}
+```javascript
 var metalsmith = require('metalsmith');
 var templates = require('metalsmith-templates');
 var markdown = require('metalsmith-markdown');
@@ -98,7 +98,7 @@ metalsmith(__dirname)
   .build(function (err) {
     if (err) throw err;
   });
-{% endhighlight %}
+```
 
 The entire build script consists of declaring dependencies, creating an instance of Metalsmith and using a number of plug-ins.
 
@@ -139,7 +139,7 @@ Uses the consolidate.js library on specified template files and allows for the u
 
 ### Dependencies and Shell Scripts
 
-{% highlight javascript %}
+```javascript
 {
   "main": "build.js",
   "scripts": {
@@ -163,7 +163,7 @@ Uses the consolidate.js library on specified template files and allows for the u
     "onchange": "0.0.2"
   }
 }
-{% endhighlight %}
+```
 
 The two pieces of note are the “start” and “deploy” properties on the scripts objects. The start script is a node convention for “package.json” files and will execute the build process when you run `npm start`. The deploy script will build the site and then use the Divshot CLI tool to upload the packaged build using the configuration settings found in the “divshot.json” file.
 
@@ -174,11 +174,11 @@ To make the authoring process a bit smoother I use a few additional tools to reb
 
 The main tool is the Node version of Foreman, a process manager, which allows you to run several processes at once (each with their own logging) by specifying the custom commands in a process file called “Procfile”. Foreman will create a child process for each line in the file and use any environment variables specified in a “.env” file if you have any API keys or sensitive data you don’t want to commit with git. Here are the contents of a Procfile I’m using:
 
-{% highlight bash %}
+```bash
 metal: npm start && node_modules/.bin/onchange 'templates/*' 'src/*' -- npm start
 serve: divshot server build -p 4000 --no-cache
 bsync: node_modules/.bin/browser-sync start --files "./build/*.css" --proxy 0.0.0.0:4000 --no-open --no-notify
-{% endhighlight %}
+```
 
 These commands can be executed by running `nf start`.
 
@@ -195,7 +195,7 @@ A very quick example of some source files that further explain the workflow are 
 
 **src/index.md**
 
-{% highlight yaml %}
+```yaml
 ---
 title: A Page Title
 template: default.jade
@@ -204,18 +204,18 @@ template: default.jade
 ## Subheading
 
 A contrived Markdown example.
-{% endhighlight %}
+```
 
 
 **templates/default.jade**
 
-{% highlight javascript %}
+```javascript
 html
 head
   title title
 body
   != contents
-{% endhighlight %}
+```
 
 
 ## Conclusion

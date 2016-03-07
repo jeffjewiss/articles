@@ -1,6 +1,5 @@
 markdown: kramdown
-highlighter: pygments
-permalink: /:title
+permalink: /:title/
 url: "http://articles.jeffjewiss.com"
 timezone: America/Toronto
 

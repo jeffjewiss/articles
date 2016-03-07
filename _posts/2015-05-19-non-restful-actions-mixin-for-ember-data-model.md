@@ -18,7 +18,7 @@ My goal was to craft a solution where the code not specific to this model could 
 
 The mixin ended up with two functions as properties: `getActionUrl` and `nonRestAction`.
 
-{% highlight javascript %}
+```javascript
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
@@ -36,7 +36,7 @@ export default Ember.Mixin.create({
     return `${adapter.buildURL(type, id)}/${action}`;
   }
 });
-{% endhighlight %}
+```
 
 The first method, `getActionUrl`, uses the model’s adapter to construct the URL for the request. This is valuable because it means the model can change or have custom adapter behaviour and the correct URL will still get constructed. This URL is created by getting the model name from the constructor function’s `typeKey` property and passing this into the adapter’s `buildUrl` method along with the model’s ID, and then appending the action to this root URL.
 
@@ -47,7 +47,7 @@ The second method, `nonRestAction`, gets the current model’s adapter by lookin
 
 To setup a model to use the mixin: import the mixin in the desired model file and provide the mixin as the first argument when defining the model by extending an Ember Data model or Ember Object. The example below details how you could update the model when a non-restful action is successful.
 
-{% highlight javascript %}
+```javascript
 import DS from 'ember-data';
 import NonRestAction from 'coaching-assistant/mixins/non-rest-action';
 
@@ -60,14 +60,14 @@ export default DS.Model.extend(NonRestAction, {
     });
   }
 });
-{% endhighlight %}
+```
 
 
 ## Calling a Non-RESTful Action
 
 Calling one of these actions from somewhere else in your application can be accomplished by calling a defined method on the model (setup in the previous example code as the dismiss property) or by calling the `nonRestAction` method with all the action and method arguments, and optional data (if required).
 
-{% highlight javascript %}
+```javascript
 import Ember from 'ember';
 
 export default Ember.Route.extend({
@@ -87,7 +87,7 @@ export default Ember.Route.extend({
     }
   }
 });
-{% endhighlight %}
+```
 
 The first action, dismiss, shows an example of using a non-RESTful action that has been defined on the model, with custom behavior setup to update the model data when the request completes. It then has code in this route’s action to handle success and failure.
 
