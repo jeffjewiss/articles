@@ -1,6 +1,6 @@
 ---
 title: Articles
-timezone: America/Toronto
+timezone: America/New_York
 collections:
   posts:
     title: Posts
@@ -17,7 +17,7 @@ gems:
 - jekyll-sitemap
 sass:
   sass_dir: _sass
-  style: :compressed
+  style: compressed
 exclude:
 - README.md
 - ".editorconfig"
