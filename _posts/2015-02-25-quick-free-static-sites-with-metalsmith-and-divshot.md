@@ -1,8 +1,8 @@
 ---
-layout: post
 title: Quick and Free Static Sites with Metalsmith and Divshot
+date: 2015-02-25 00:00:00 -05:00
+layout: post
 ---
-
 
 Sometimes you just want to be able to build something with your favourite tools and get it online quickly. There are a lot of options available today, but I’ve settled on a few favourites, which I’ve turned into a repeatable process for getting projects live quite quickly.
 

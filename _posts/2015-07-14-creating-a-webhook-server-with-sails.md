@@ -1,6 +1,7 @@
 ---
-layout: post
 title: Building a Webhook Server in Sails
+date: 2015-07-14 00:00:00 -04:00
+layout: post
 ---
 
 Webhooks are a simple way to integrate APIs together based on events that occur on one of the APIs. They are also often referred to as HTTP callbacks. This is useful for developers who want to add functionality to their own web application or for connecting third-party services together.

@@ -1,6 +1,7 @@
 ---
-layout: post
 title: Introduction to Sails.js
+date: 2014-12-20 00:00:00 -05:00
+layout: post
 ---
 
 Sails is a [framework](http://sailsjs.org/) and a set of tools to help you build well structured Node.js applications, prototypes and APIs. It provides built in support for web sockets, MVC structured code and a CLI for quickly scaffolding your API, while building everything as an interchangeable node module.

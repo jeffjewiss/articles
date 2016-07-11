@@ -1,22 +1,25 @@
-markdown: kramdown
-permalink: /:title/
-url: "http://articles.jeffjewiss.com"
+---
+title: Articles
 timezone: America/Toronto
-
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+markdown: kramdown
+permalink: "/:title/"
+url: http://articles.jeffjewiss.com
 kramdown:
   input: GFM
-
-# Use the following plug-ins
 gems:
-  - jekyll-sitemap
-
+- jekyll-sitemap
 sass:
   sass_dir: _sass
   style: :compressed
-
-# Exclude these files from your production _site
 exclude:
-  - README.md
-  - .editorconfig
-  - .gitignore
-  - Procfile
+- README.md
+- ".editorconfig"
+- ".gitignore"
+- Procfile

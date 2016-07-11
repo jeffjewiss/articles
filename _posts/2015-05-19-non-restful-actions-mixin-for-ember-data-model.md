@@ -1,6 +1,7 @@
 ---
-layout: post
 title: Non-RESTful Actions Mixin for Ember Data Model
+date: 2015-05-19 00:00:00 -04:00
+layout: post
 ---
 
 ## Background
