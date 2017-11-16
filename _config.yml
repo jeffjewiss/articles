@@ -13,13 +13,13 @@ permalink: "/:title/"
 url: http://articles.jeffjewiss.com
 kramdown:
   input: GFM
-gems:
-- jekyll-sitemap
+plugins:
+  - jekyll-sitemap
 sass:
   sass_dir: _sass
   style: compressed
 exclude:
-- README.md
-- ".editorconfig"
-- ".gitignore"
-- Procfile
+  - README.md
+  - ".editorconfig"
+  - ".gitignore"
+  - Procfile
